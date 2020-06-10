@@ -1,6 +1,6 @@
 Docker image
 -----
-![Docker image diagram](../precis/images/docker-run-hello-world-snapshot.png)
+![Docker image diagram](../info/images/docker-run-hello-world-snapshot.png)
 
 
 Docker commands
@@ -62,13 +62,13 @@ docker exec -it <container id> sh
 
 **Building docker image**
 
-![Docker image flow](../precis/images/docker-image-flow.png)
+![Docker image flow](../info/images/docker-image-flow.png)
 
 **Create docker file**
 
 >Writing a Dockerfile it's like you being given a computer without OS and being asked to install Chrome
 
-![Dockerfile flow](../precis/images/dockerfile-flow.png)
+![Dockerfile flow](../info/images/dockerfile-flow.png)
 
 
 Dockerfile
@@ -115,7 +115,7 @@ COPY ./ ./     ->
 
 **Port mapping**
 
-![Port mapping](../precis/images/docker-portMapping.png)
+![Port mapping](../info/images/docker-portMapping.png)
 
 ```
 docker run -p 8080:8080 <image id>      ->     ... -p [port local host]:[port inside container]
@@ -126,6 +126,24 @@ docker run -p 8080:8080 <image id>      ->     ... -p [port local host]:[port in
 WORKDIR /usr/app     ->     Any following command will be executed relative to this path in the container (as well as all docker exec ...)
 ```
 
+ **Docker Compose Files**
+ Automate running set of commands: docker-compose.yml
+ Docker Compose make the connections between the all services define and the name of the service can be used as an URL to reach other container.
+ 
+ ![Docker Compose Commands](../info/images/docker-composeCommands.png)
+ 
+ **Run Docker containers in the background with docker-compose and stop**
+ ```
+ docker-compose up -d
+ docker-compose down
+ ``` 
+ 
+ ![Docker Compose Restart Policies](../info/images/dockerCompose-restartPolicies.png)
+ 
+ **Container status with Docker Compose**
+ ```
+ docker-compose ps
+ ```
  
  
  
