@@ -87,6 +87,7 @@ CMD ["redis-server"]
 **Build docker image**
 ```
 docker build .     ->     '.'  - build context
+docker build -f Dockerfile.dev .     -> -f <file_name>
 ```
 
 On the *RUN* step: 1) new temporary image will be build with primary command `apk add --update redis` -> **image1** 2) **container1** will be shut down on the completion. 
@@ -126,24 +127,29 @@ docker run -p 8080:8080 <image id>      ->     ... -p [port local host]:[port in
 WORKDIR /usr/app     ->     Any following command will be executed relative to this path in the container (as well as all docker exec ...)
 ```
 
- **Docker Compose Files**
- Automate running set of commands: docker-compose.yml
- Docker Compose make the connections between the all services define and the name of the service can be used as an URL to reach other container.
+**Docker Compose Files**
+Automate running set of commands: docker-compose.yml
+Docker Compose make the connections between the all services define and the name of the service can be used as an URL to reach other container.
  
- ![Docker Compose Commands](../info/images/docker-composeCommands.png)
+![Docker Compose Commands](../info/images/docker-composeCommands.png)
  
- **Run Docker containers in the background with docker-compose and stop**
- ```
- docker-compose up -d
- docker-compose down
- ``` 
+**Run Docker containers in the background with docker-compose and stop**
+```
+docker-compose up -d
+docker-compose down
+``` 
  
- ![Docker Compose Restart Policies](../info/images/dockerCompose-restartPolicies.png)
+![Docker Compose Restart Policies](../info/images/dockerCompose-restartPolicies.png)
  
- **Container status with Docker Compose**
- ```
+**Container status with Docker Compose**
+```
  docker-compose ps
- ```
+```
+ 
+**Docker Volumes (references to resources on the local env - dev mode)**
+```
+docker run -it -p 3000:3000 -v /app/node_modules/ -v $(pwd):/app CONTAINER_ID     -> '-v /app/node_modules/' do not override this folder
+```
  
  
  
