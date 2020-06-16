@@ -1,0 +1,22 @@
+# Should be hidden
+sudo: required
+services:
+  - docker
+  
+before_install:
+  - docker build -t gwenu/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true gwenu/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "docker-react"
+  env: "Docker-env"
+  bucket_name: "elastocbeanstalk-us-west-2-30647662753"
+  bucket_path: "docker-react"
+  on: 
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
