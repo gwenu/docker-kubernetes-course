@@ -67,16 +67,21 @@ Service linked with Pod by selector (in Service) - labels (in Pod) -> 'component
 
 **Feed a config file to Kubectl**
 ```
-kubectl apply -f <filename>
+kubectl apply -f <filename>/<foldername with multiple files>
 ```
 
-**Print the status of all running pods/services**
+**Print the status of all running pods/services/deployments**
 ```
 kubectl get pods
 kubectl get services
+kubectl get deployments
 ```
 
 **Address of VM**
 ```
 minikube ip
 ```
+
+**ClusterIP**
+
+![Kubernetes custerIP](../info/images/kubernetes-clusterIP.png)
